@@ -54,6 +54,13 @@ public class Game {
                         player.getHit(tempMonster.getStrength());
                         System.out.println(player.getName()+ ": "+ player.getHealth() + " Healthpoints left");
                         System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left");
+                        System.out.println("You hit the monster, dealing " + player.getStrength() + " damage.");
+                        tempMonster.getHit(player.getStrength());
+                        tempMonster.getsoundWhenHit();
+                        System.out.println("The monster hits you, dealing "+ tempMonster.getStrength() + " damage.");
+                        player.getHit(tempMonster.getStrength());
+                        System.out.println(player.getName()+ ": "+ player.getHealth() + " Healthpoints left");
+                        System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left");
 
                     }
                     break;
