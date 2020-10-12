@@ -2,20 +2,21 @@ package com.company;
 
 public class BigMonster extends Monster{
 
-    private int bigMonsterExperience;
-    private int bigMonsterHealth;
-    private String bigMonsterName;
+    private int experience;
+    private String name;
+    private int level;
 
     public BigMonster(String name, int startingHealth, int experience) {
         super(name, startingHealth);
-
+        this.experience = experience;
     }
 
-    public int getBigMonsterExperience() {
-        return this.bigMonsterExperience;
+    public int getExperience() {
+        return this.experience;
     }
 
-    public int getBigMonsterHealth() {
-        return this.bigMonsterHealth;
+    public int getLevel() {
+        return this.level;
     }
+
 }

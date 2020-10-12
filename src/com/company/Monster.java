@@ -1,40 +1,42 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class Monster {
-    private String monsterName = "";
-    private int monsterLevel = 0;
-    private int monsterHealthPoints = 0;
-
-
+    Random r = new Random();
+    private String name;
+    private String call = "URGHHH * SLuRp * ";
+    private int health;
+    private int strength;
+    private int level = r.nextInt(10) + 1;
     public Monster(String name, int health) {
-       // super(name, health, experience);
-        this.monsterName = name;
-        this.monsterHealthPoints = health;
-
-    }
-//    public List<Monster> getAllMonsters() {
-//        Monster monster1 = new Monster("Jebote", 50);
-//        Monster monster2 = new Monster("Dino", 50);
-//        Monster monster3 = new Monster("Besim", 50);
-//        List<Monster> allMonsters = new ArrayList<>();
-//        allMonsters.add(monster1);
-//        allMonsters.add(monster3);
-//        allMonsters.add(monster2);
-//        return allMonsters;
-//    }
-
-    public String getMonsterName() {
-        return this.monsterName;
+        this.name = name;
+        this.health = health;
     }
 
-    public int monsterLevel() {
-        return this.monsterLevel;
+    public String getName() {
+        return this.name;
+    }
+    public void getsoundWhenHit(String message) {
+        System.out.println(this.name + ": " + message);
+    }
+    public void getsoundWhenHit() {
+        getsoundWhenHit(call);
     }
 
-    public int monsterHealthPoints() {
-        return this.monsterHealthPoints;
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void getHit(int hit) {
+        this.health -= hit;
+    }
+
+    public int getLevel(){
+        return this.level;
+    }
+
+    public int getStrength() {
+        return 5+getLevel();
     }
 }

@@ -9,15 +9,13 @@ public class Game {
     Scanner sc = new Scanner(System.in);
     List<Monster> allMonsters = new ArrayList<>();
     Random r = new Random();
+    Monster monster1 = new Monster("Jebote", 50);
+    Monster monster2 = new Monster("Dino", 50);
+    Monster monster3 = new Monster("Besim", 50);
+    BigMonster bigMonster1 = new BigMonster("Daaamn-Monster", 100, 20);
+    BigMonster bigMonster2 = new BigMonster("OMG-Monster", 100, 20);
+    BigMonster bigMonster3 = new BigMonster("Holy-ShitMonster", 100, 20);
     public void initializeGame() {
-        Scanner sc = new Scanner(System.in);
-        Monster monster1 = new Monster("Jebote", 50);
-        Monster monster2 = new Monster("Dino", 50);
-        Monster monster3 = new Monster("Besim", 50);
-        BigMonster bigMonster1 = new BigMonster("Daaamn-Monster", 100, 20);
-        BigMonster bigMonster2 = new BigMonster("OMG-Monster", 100, 20);
-        BigMonster bigMonster3 = new BigMonster("Holy-ShitMonster", 100, 20);
-//                List<Monster> allMonsters = new ArrayList<>();
         allMonsters.add(monster1);
         allMonsters.add(monster2);
         allMonsters.add(monster3);
@@ -31,7 +29,6 @@ public class Game {
     }
 
     public void startGame() {
-        int[] findMonsterGenerator = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Player player = new Player(sc.nextLine());
         System.out.println("1. Go adventuring");
         System.out.println("2. Show details about your character");
@@ -45,18 +42,27 @@ public class Game {
                         System.out.println("[Press Enter to continue]");
                         sc.nextLine();
                     } else {
-                        System.out.println("Wow a wild " + getRandomMonster().getMonsterName() + " appeared!!!!!");
+                        Monster tempMonster;
+                        tempMonster = getRandomMonster();
+                        System.out.println("Wow a wild " + tempMonster.getName() + " appeared!!!!!");
                         System.out.println("[Press enter to hit the monster]");
                         sc.nextLine();
-                        System.out.println();
+                        System.out.println("You hit the monster, dealing " + player.getStrength() + " damage.");
+                        tempMonster.getHit(player.getStrength());
+                        tempMonster.getsoundWhenHit();
+                        System.out.println("The monster hits you, dealing "+ tempMonster.getStrength() + " damage.");
+                        player.getHit(tempMonster.getStrength());
+                        System.out.println(player.getName()+ ": "+ player.getHealth() + " Healthpoints left");
+                        System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left");
+
                     }
                     break;
             case "2":
                 System.out.println("*****************************");
-                System.out.println("* Player Name: " + player.getPlayerName());
-                System.out.println("* Player Level: " + player.getPlayerLevel());
-                System.out.println("* Player Health: " + player.getPlayerHealthPoints() + "/200");
-                System.out.println("* Player Experience: " + player.getPlayerExperience() + "/100");
+                System.out.println("* Player Name: " + player.getName());
+                System.out.println("* Player Level: " + player.getLevel());
+                System.out.println("* Player Health: " + player.getHealth() + "/200");
+                System.out.println("* Player Experience: " + player.getExperience() + "/100");
                 System.out.println("*****************************");
                 break;
             case "3":
