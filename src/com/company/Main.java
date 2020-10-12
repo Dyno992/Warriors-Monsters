@@ -1,12 +1,10 @@
 package com.company;
 
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
         int[] findMonsterGenerator = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         //Insert input
         Scanner sc = new Scanner(System.in);
@@ -29,7 +27,10 @@ public class Main {
                         System.out.println("Didn't find any monsters");
                         System.out.println("[Press Enter to continue]");
                     } else{
-                        System.out.println("Wow a wild" + Math.random(Monster));
+                        Monster monster1 = new Monster("Jebote", 50, 10);
+                        Monster monster2 = new Monster("Dino", 50, 10);
+                        Monster monster3 = new Monster("Besim", 50, 10);
+                        System.out.println("Wow a wild" + );
                     }
                 }
                 break;
