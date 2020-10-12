@@ -10,7 +10,7 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public int getplayerLevel() {
+    public int getPlayerLevel() {
         return this.level;
     }
 
