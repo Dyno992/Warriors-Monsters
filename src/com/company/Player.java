@@ -13,11 +13,11 @@ public class Player {
         return this.level = l;
     }
 
-    public int playerExperienc(int e) {
+    public int playerExperience(int e) {
         return this.experience = e;
     }
 
-    public int playerhealthPoints(int h) {
+    public int playerHealthPoints(int h) {
         return this.healthPoints = h;
     }
 }
