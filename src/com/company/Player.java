@@ -9,15 +9,24 @@ public class Player {
     public Player(String playerName) {
         this.playerName = playerName;
     }
-    public int playerLevel(int l) {
-        return this.level = l;
+
+    public int getplayerLevel() {
+        return this.level;
     }
 
-    public int playerExperience(int e) {
-        return this.experience = e;
+    public String getPlayerName() {
+        return this.playerName;
+    }
+//
+//    public int playerExperience(int e) {
+//        return this.experience = e;
+//    }
+
+    public int getPlayerExperience() {
+        return this.experience;
     }
 
-    public int playerHealthPoints(int h) {
-        return this.healthPoints = h;
+    public int getPlayerHealthPoints() {
+        return this.healthPoints;
     }
 }

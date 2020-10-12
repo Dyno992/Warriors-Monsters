@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -19,10 +20,23 @@ public class Main {
         //Menu Choice
         System.out.print("\nMake your choice: ");
         switch (sc.nextLine()) {
-            case "1" -> System.out.println("Nu tryckte du på ettan");
-            case "2" -> System.out.println("nu tryckte du på tvåan");
-            case "3" -> System.out.println("nu tryckte du på trean");
-            default -> System.out.println("Du tryckte inte på något");
+            case "1" :
+                System.out.println("Nu tryckte du på ettan");
+                break;
+            case "2" :
+                System.out.println("*****************************");
+                System.out.println("* Player Name: " + player.getPlayerName());
+                System.out.println("* Player Level: " + player.getplayerLevel());
+                System.out.println("* Player Health: " + player.getPlayerHealthPoints() + "/200");
+                System.out.println("* Player Experience: " + player.getPlayerExperience() + "/100");
+                System.out.println("*****************************");
+                break;
+            case "3" :
+                System.out.println("Goodbye...");
+                break;
+            default :
+                System.out.println("Du tryckte inte på något");
+                break;
         }
     }
 }
