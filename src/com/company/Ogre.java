@@ -1,12 +1,12 @@
 package com.company;
 
-public class BigMonster extends Monster{
+public class Ogre extends Monster{
 
     private int experience;
     private String name;
     private int level;
 
-    public BigMonster(String name, int startingHealth, int experience) {
+    public Ogre(String name, int startingHealth, int experience) {
         super(name, startingHealth, experience);
         this.experience = experience;
     }

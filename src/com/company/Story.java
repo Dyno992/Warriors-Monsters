@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Story {
     Scanner sc = new Scanner(System.in);
-
     public void fightScene(Monster tempMonster, Player player) {
         System.out.println("Wow a wild " + tempMonster.getName() + " appeared!!!!!");
         System.out.println("[Press enter to hit the monster]");
@@ -26,6 +25,13 @@ public class Story {
                 player.giveExperience(tempMonster.getExperience());
                 player.checkIfLevelUp();
                 System.out.println("You are level " + player.getLevel() + ", and you have " + player.getExperience() + " experience and " + player.getHealth() + " healthpoints!");
+                if (player.getLevel() == 10) {
+                    System.out.println("Congratulations! You are max level and have just won over the Monsters!!!\n");
+                    System.out.println("[Press Enter to close the game]");
+                    sc.nextLine();
+                    System.exit(0);
+                }
+                return;
             }
         }
     }
