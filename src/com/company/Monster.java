@@ -9,9 +9,12 @@ public class Monster {
     private int health;
     private int strength;
     private int level = r.nextInt(10) + 1;
-    public Monster(String name, int health) {
+    private int experience;
+
+    public Monster(String name, int health, int experience) {
         this.name = name;
         this.health = health;
+        this.experience = experience;
     }
 
     public String getName() {
@@ -38,5 +41,9 @@ public class Monster {
 
     public int getStrength() {
         return 5+getLevel();
+    }
+
+    public int getExperience() {
+        return this.experience;
     }
 }

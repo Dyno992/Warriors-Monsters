@@ -7,7 +7,7 @@ public class BigMonster extends Monster{
     private int level;
 
     public BigMonster(String name, int startingHealth, int experience) {
-        super(name, startingHealth);
+        super(name, startingHealth, experience);
         this.experience = experience;
     }
 
