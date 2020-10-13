@@ -16,7 +16,31 @@ public class Game {
     Ogre ogre1 = new Ogre("Daaamn-Monster", 100, 150);
     Ogre ogre2 = new Ogre("OMG-Monster", 100, 150);
     Ogre ogre3 = new Ogre("Holy-ShitMonster", 100, 150);
+    Dragon dragon1 = new Dragon("Daaamn-Dragon", 150, 200);
+    Dragon dragon2 = new Dragon("OMG-Dragon", 150, 200);
+    Dragon dragon3 = new Dragon("Holy-ShitDragon", 150, 200);
     Player player;
+
+    // text colors
+    public static final String tbColor_RESET = "\u001B[0m";
+    public static final String tColor_BLACK = "\u001B[30m";
+    public static final String tColor_RED = "\u001B[31m";
+    public static final String tColor_GREEN = "\u001B[32m";
+    public static final String tColor_YELLOW = "\u001B[33m";
+    public static final String tColor_BLUE = "\u001B[34m";
+    public static final String tColor_PURPLE = "\u001B[35m";
+    public static final String tColor_CYAN = "\u001B[36m";
+    public static final String tColor_WHITE = "\u001B[37m";
+    // text background color
+    public static final String bColor_BLACK = "\u001B[40m";
+    public static final String bColor_RED = "\u001B[41m";
+    public static final String bColor_GREEN = "\u001B[42m";
+    public static final String bColor_YELLOW = "\u001B[43m";
+    public static final String bColor_BLUE = "\u001B[44m";
+    public static final String bColor_PURPLE = "\u001B[45m";
+    public static final String bColor_CYAN = "\u001B[46m";
+    public static final String bColor_WHITE = "\u001B[47m";
+
     public void initializeGame() {
         allMonsters.add(monster1);
         allMonsters.add(monster2);
@@ -24,7 +48,10 @@ public class Game {
         allMonsters.add(ogre1);
         allMonsters.add(ogre2);
         allMonsters.add(ogre3);
-        System.out.println("**********************************");
+        allMonsters.add(dragon1);
+        allMonsters.add(dragon2);
+        allMonsters.add(dragon3);
+        System.out.println("\n**********************************");
         System.out.println("* WELCOME TO WARRIORS & MONSTERS *");
         System.out.println("**********************************");
         System.out.print("Enter your name: ");
@@ -32,9 +59,9 @@ public class Game {
     }
 
     public void openMenu() {
-        System.out.println("1. Go adventuring");
-        System.out.println("2. Show details about your character");
-        System.out.println("3. Exit game");
+        System.out.println(tColor_GREEN + "1. Go adventuring" + tbColor_RESET);
+        System.out.println(tColor_BLUE + "2. Show details about your character" + tbColor_RESET);
+        System.out.println(tColor_RED + "3. Exit game" + tbColor_RESET);
         System.out.print("\nMake your choice: ");
         switch (sc.nextLine()) {
             case "1":
@@ -60,21 +87,21 @@ public class Game {
 
 
             case "2":
-                System.out.println("*****************************");
-                System.out.println("* Player Name: " + player.getName());
-                System.out.println("* Player Level: " + player.getLevel());
-                System.out.println("* Player Health: " + player.getHealth() + "/200");
-                System.out.println("* Player Experience: " + player.getExperience() + "/100");
-                System.out.println("*****************************\n");
+                System.out.println(tColor_BLUE + "*****************************\n"
+                        + "* Player Name: " + player.getName() + "\n"
+                        + "* Player Level: " + player.getLevel() + "\n"
+                        + "* Player Health: " + player.getHealth() + "/200\n"
+                        + "* Player Experience: " + player.getExperience() + "/100\n"
+                        + "*****************************" + tbColor_RESET);
                 System.out.println("[Press Enter to go back to the Menu]");
                 sc.nextLine();
                 openMenu();
                 break;
             case "3":
-                System.out.println("Goodbye...");
+                System.out.println(tColor_RED + "Goodbye..." + tbColor_RESET);
                 break;
             default:
-                System.out.println("Du tryckte inte på något");
+                System.out.println(tColor_RED + "You didn't press anything..." + tbColor_RESET);
 
         }
     }
