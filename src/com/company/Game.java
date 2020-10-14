@@ -23,10 +23,11 @@ public class Game {
 
     // text colors
     public static final String tbColor_RESET = "\u001B[0m";
-    public static final String tColor_BLACK = "\u001B[30m";
+    public static final String tColor_BOLDWHITE = "\u001B[30m";
     public static final String tColor_RED = "\u001B[31m";
     public static final String tColor_GREEN = "\u001B[32m";
     public static final String tColor_YELLOW = "\u001B[33m";
+    public static final String tColor_BOLDYELLOW ="\033[1;33m";
     public static final String tColor_BLUE = "\u001B[34m";
     public static final String tColor_PURPLE = "\u001B[35m";
     public static final String tColor_CYAN = "\u001B[36m";
@@ -51,9 +52,12 @@ public class Game {
         allMonsters.add(dragon1);
         allMonsters.add(dragon2);
         allMonsters.add(dragon3);
-        System.out.println("\n**********************************");
-        System.out.println("* WELCOME TO WARRIORS & MONSTERS *");
-        System.out.println("**********************************");
+
+        System.out.println(tColor_BOLDWHITE + "\n**********************************" + tbColor_RESET + "\n"
+                + tColor_BOLDWHITE + "*" + tbColor_RESET
+                + tColor_BOLDYELLOW + " WELCOME TO WARRIORS & MONSTERS " + tbColor_RESET
+                + tColor_BOLDWHITE + "*" + tbColor_RESET + "\n"
+                + tColor_BOLDWHITE + "**********************************" + tbColor_RESET);
         System.out.print("Enter your name: ");
         player = new Player(sc.nextLine());
     }
@@ -67,8 +71,8 @@ public class Game {
             case "1":
                 int temp = r.nextInt(10) + 1;
                     if (temp == 5) {
-                        System.out.println("Didn't find any monsters");
-                        System.out.println("Press y to continue, anything else to go back to the Menu");
+                        System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
+                        System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to continue, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
                         if (sc.nextLine().equals("y")) {
                             Monster tempMonster;
                             tempMonster = getRandomMonster();
@@ -111,7 +115,7 @@ public class Game {
 
         public void continueOrNot() {
             System.out.println("Do you want to continue your adventures?\n");
-            System.out.println("Press y for yes, press anything else to go back to the menu.");
+            System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "for yes, press anything else to go back to the " + tColor_YELLOW +"menu." + tbColor_RESET);
             if(sc.nextLine().equals("y")){
                 huntMonsters();
             }else{
@@ -121,7 +125,7 @@ public class Game {
         public void huntMonsters() {
             int tempNumber = r.nextInt(10) + 1;
             if (tempNumber == 5) {
-                System.out.println("Didn't find any monsters");
+                System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
                 System.out.println("[Press Enter to continue]");
                 sc.nextLine();
             } else {
