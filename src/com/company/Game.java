@@ -10,28 +10,31 @@ public class Game {
     List<Monster> allMonsters = new ArrayList<>();
     Random r = new Random();
     Story story = new Story();
-    Monster monster1 = new Monster("Jebote", 50,100);
-    Monster monster2 = new Monster("Dino", 50,100);
-    Monster monster3 = new Monster("Besim", 50,100);
-    Ogre ogre1 = new Ogre("Daaamn-Monster", 100, 150);
-    Ogre ogre2 = new Ogre("OMG-Monster", 100, 150);
-    Ogre ogre3 = new Ogre("Holy-ShitMonster", 100, 150);
-    Dragon dragon1 = new Dragon("Daaamn-Dragon", 150, 200);
-    Dragon dragon2 = new Dragon("OMG-Dragon", 150, 200);
-    Dragon dragon3 = new Dragon("Holy-ShitDragon", 150, 200);
+    Monster monster1 = new Monster(tColor_PURPLE + "➤ Orc" + tbColor_RESET, 50,100);
+    Monster monster2 = new Monster(tColor_PURPLE + "➤ Dyno992" + tbColor_RESET, 50,100);
+    Monster monster3 = new Monster(tColor_PURPLE + "➤ Spetzim" + tbColor_RESET, 50,100);
+    Ogre ogre1 = new Ogre(tColor_PURPLE + "➤ Bigfoot" + tbColor_RESET, 100, 150);
+    Ogre ogre2 = new Ogre(tColor_PURPLE + "➤ Chupacabra" + tbColor_RESET, 100, 150);
+    Ogre ogre3 = new Ogre(tColor_PURPLE + "➤ Werewolf" + tbColor_RESET, 100, 150);
+    Dragon dragon1 = new Dragon(tColor_PURPLE + "➤ Draco" + tbColor_RESET, 150, 200);
+    Dragon dragon2 = new Dragon(tColor_PURPLE + "➤ Pendragon" + tbColor_RESET, 150, 200);
+    Dragon dragon3 = new Dragon(tColor_PURPLE + "➤ Brenton" + tbColor_RESET, 150, 200);
     Player player;
 
     // text colors
     public static final String tbColor_RESET = "\u001B[0m";
-    public static final String tColor_BOLDWHITE = "\u001B[30m";
     public static final String tColor_RED = "\u001B[31m";
     public static final String tColor_GREEN = "\u001B[32m";
     public static final String tColor_YELLOW = "\u001B[33m";
-    public static final String tColor_BOLDYELLOW ="\033[1;33m";
     public static final String tColor_BLUE = "\u001B[34m";
     public static final String tColor_PURPLE = "\u001B[35m";
     public static final String tColor_CYAN = "\u001B[36m";
     public static final String tColor_WHITE = "\u001B[37m";
+    // bold text colors
+    public static final String tColor_BOLDBLUE = "\033[1;34m";
+    public static final String tColor_BOLDPURPLE = "\033[1;35m";
+    public static final String tColor_BOLDWHITE = "\u001B[30m";
+    public static final String tColor_BOLDYELLOW ="\033[1;33m";
     // text background color
     public static final String bColor_BLACK = "\u001B[40m";
     public static final String bColor_RED = "\u001B[41m";
@@ -53,16 +56,17 @@ public class Game {
         allMonsters.add(dragon2);
         allMonsters.add(dragon3);
 
-        System.out.println(tColor_BOLDWHITE + "\n**********************************" + tbColor_RESET + "\n"
-                + tColor_BOLDWHITE + "*" + tbColor_RESET
+        System.out.println(tColor_BOLDWHITE + "\n****************➤*****************" + tbColor_RESET + "\n"
+                + tColor_BOLDWHITE + "❂" + tbColor_RESET
                 + tColor_BOLDYELLOW + " WELCOME TO WARRIORS & MONSTERS " + tbColor_RESET
-                + tColor_BOLDWHITE + "*" + tbColor_RESET + "\n"
-                + tColor_BOLDWHITE + "**********************************" + tbColor_RESET);
-        System.out.print("Enter your name: ");
-        player = new Player(sc.nextLine());
+                + tColor_BOLDWHITE + "❂" + tbColor_RESET + "\n"
+                + tColor_BOLDWHITE + "****************➤*****************" + tbColor_RESET);
+        System.out.print("\nEnter your name: ");
+        player = new Player(tColor_BLUE + "❂ " + sc.nextLine() + tbColor_RESET);
     }
 
     public void openMenu() {
+        System.out.println(tColor_YELLOW + "\nMenu:" + tbColor_RESET);
         System.out.println(tColor_GREEN + "1. Go adventuring" + tbColor_RESET);
         System.out.println(tColor_BLUE + "2. Show details about your character" + tbColor_RESET);
         System.out.println(tColor_RED + "3. Exit game" + tbColor_RESET);
@@ -88,25 +92,23 @@ public class Game {
                         continueOrNot();
                         }
                     break;
-
-
             case "2":
-                System.out.println(tColor_BLUE + "*****************************\n"
+                System.out.println("*****************************\n"
                         + "* Player Name: " + player.getName() + "\n"
                         + "* Player Level: " + player.getLevel() + "\n"
                         + "* Player Health: " + player.getHealth() + "/200\n"
                         + "* Player Experience: " + player.getExperience() + "/100\n"
-                        + "*****************************" + tbColor_RESET);
+                        + "*****************************");
                 System.out.println("[Press Enter to go back to the Menu]");
                 sc.nextLine();
                 openMenu();
                 break;
             case "3":
-                System.out.println(tColor_RED + "Goodbye..." + tbColor_RESET);
+                System.out.println(tColor_RED + "Goodbye...☹ See you soon!!" + tbColor_RESET);
                 break;
             default:
                 System.out.println(tColor_RED + "You didn't press anything..." + tbColor_RESET);
-
+                openMenu();
         }
     }
         public Monster getRandomMonster() {
