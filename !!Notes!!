@@ -1,0 +1,22 @@
+Lab 6 saker som måste göras:
+
+-Spelet ska avslutas lvl 10 -> finns redan i koden Game.
+
+-Save & exit funktion
+
+-Lägga till nån GUI funktion eller nåt annat som
+uppfyller krav på labb
+
+-JAvadoc kommentarer
+
+-Tester
+
+-Sortering ("YOu won the game , there is only 2 monsters left in the woods")
+
+
+
+Buggar:
+1) Efter at ha dödat en monster den kan komma upp igen och få t.ex -10 etc... healthpoints,
+vi behöver göra så att man inte kan ta en död monster,ogre,dragon.
+
+2) Göra så att healthpoints inte kan vara mindre än 0 points. 
