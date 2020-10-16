@@ -13,10 +13,15 @@ uppfyller krav på labb
 
 -Sortering ("YOu won the game , there is only 2 monsters left in the woods")
 
+- Ibland det kan bli att player eller monster failar sin hit och då visas att någon av de har missat sin hit
+och då den som missar får inga xp och gör ingen damage till motståndaren.
 
+
+------------------------------------------------------------------------------------------------------------------------
 
 Buggar:
+
 1) Efter at ha dödat en monster den kan komma upp igen och få t.ex -10 etc... healthpoints,
 vi behöver göra så att man inte kan ta en död monster,ogre,dragon.
 
-2) Göra så att healthpoints inte kan vara mindre än 0 points. 
+2) Göra så att healthpoints inte kan vara mindre än 0 points.

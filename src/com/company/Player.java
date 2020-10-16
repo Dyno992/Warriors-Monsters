@@ -6,6 +6,7 @@ public class Player {
     private int experience;
     private int xpToLvlUp = 100;
     private int health = 200;
+    private int experiencePerHit = 5;
     private int strength;
 
 
@@ -26,6 +27,10 @@ public class Player {
     }
     public void giveExperience(int xp) {
         this.experience += xp;
+    }
+
+    public int getExperiencePerHit(){
+        return this.experiencePerHit;
     }
 
     public int getHealth() {
