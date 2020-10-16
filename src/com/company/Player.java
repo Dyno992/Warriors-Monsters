@@ -50,8 +50,5 @@ public class Player {
             experience = tempXp;
             System.out.println("You leveled up, and are now level "+ getLevel());
         }
-
     }
-
-    
 }

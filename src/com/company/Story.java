@@ -38,15 +38,18 @@ public class Story {
 
     // text colors
     public static final String tbColor_RESET = "\u001B[0m";
-    public static final String tColor_BOLDWHITE = "\u001B[30m";
     public static final String tColor_RED = "\u001B[31m";
     public static final String tColor_GREEN = "\u001B[32m";
     public static final String tColor_YELLOW = "\u001B[33m";
-    public static final String tColor_BOLDYELLOW ="\033[1;33m";
     public static final String tColor_BLUE = "\u001B[34m";
     public static final String tColor_PURPLE = "\u001B[35m";
     public static final String tColor_CYAN = "\u001B[36m";
     public static final String tColor_WHITE = "\u001B[37m";
+    // bold text colors
+    public static final String tColor_BOLDBLUE = "\033[1;34m";
+    public static final String tColor_BOLDPURPLE = "\033[1;35m";
+    public static final String tColor_BOLDWHITE = "\u001B[30m";
+    public static final String tColor_BOLDYELLOW ="\033[1;33m";
     // text background color
     public static final String bColor_BLACK = "\u001B[40m";
     public static final String bColor_RED = "\u001B[41m";
