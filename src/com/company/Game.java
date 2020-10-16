@@ -10,15 +10,15 @@ public class Game {
     List<Monster> allMonsters = new ArrayList<>();
     Random r = new Random();
     Story story = new Story();
-    Monster monster1 = new Monster(tColor_PURPLE + "➤ Orc" + tbColor_RESET, 25,100);
-    Monster monster2 = new Monster(tColor_PURPLE + "➤ Dyno992" + tbColor_RESET, 25,100);
-    Monster monster3 = new Monster(tColor_PURPLE + "➤ Spetzim" + tbColor_RESET, 25,100);
-    Ogre ogre1 = new Ogre(tColor_PURPLE + "➤ Bigfoot" + tbColor_RESET, 50, 150);
-    Ogre ogre2 = new Ogre(tColor_PURPLE + "➤ Chupacabra" + tbColor_RESET, 50, 150);
-    Ogre ogre3 = new Ogre(tColor_PURPLE + "➤ Werewolf" + tbColor_RESET, 50, 150);
-    Dragon dragon1 = new Dragon(tColor_PURPLE + "➤ Draco" + tbColor_RESET, 75, 200);
-    Dragon dragon2 = new Dragon(tColor_PURPLE + "➤ Pendragon" + tbColor_RESET, 75, 200);
-    Dragon dragon3 = new Dragon(tColor_PURPLE + "➤ Brenton" + tbColor_RESET, 75, 200);
+    Monster monster1 = new Monster(tColor_PURPLE + "➤ Orc" + tbColor_RESET, 50,100);
+    Monster monster2 = new Monster(tColor_PURPLE + "➤ Dyno992" + tbColor_RESET, 50,100);
+    Monster monster3 = new Monster(tColor_PURPLE + "➤ Spetzim" + tbColor_RESET, 50,100);
+    Ogre ogre1 = new Ogre(tColor_PURPLE + "➤ Bigfoot" + tbColor_RESET, 75, 150);
+    Ogre ogre2 = new Ogre(tColor_PURPLE + "➤ Chupacabra" + tbColor_RESET, 75, 150);
+    Ogre ogre3 = new Ogre(tColor_PURPLE + "➤ Werewolf" + tbColor_RESET, 75, 150);
+    Dragon dragon1 = new Dragon(tColor_PURPLE + "➤ Draco" + tbColor_RESET, 100, 200);
+    Dragon dragon2 = new Dragon(tColor_PURPLE + "➤ Pendragon" + tbColor_RESET, 100, 200);
+    Dragon dragon3 = new Dragon(tColor_PURPLE + "➤ Brenton" + tbColor_RESET, 100, 200);
     Player player;
 
     // text colors
