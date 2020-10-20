@@ -117,7 +117,11 @@ public class Game {
         }
     }
         public Monster getRandomMonster() {
-            return allMonsters.get(r.nextInt(allMonsters.size()));
+        Monster tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
+           if (tempMonster.getHealth() <= 0){
+               tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
+            }
+            return tempMonster;
         }
 
         public void continueOrNot() {

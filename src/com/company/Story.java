@@ -28,7 +28,7 @@ public class Story {
                 System.out.println("You are level " + player.getLevel() + ", and you have " + player.getExperience() + " experience and " + player.getHealth() + " healthpoints!");
                 if (player.getLevel() == 10) {
                     System.out.println(tColor_GREEN + "Congratulations! " + tbColor_RESET + tColor_BOLDYELLOW + "You are max level and have just won over the Monsters!!!\n" + tbColor_RESET);
-                    System.out.println("[Press Enter to close the game]");
+                    System.out.println("[Press Enter to exit the game]");
                     sc.nextLine();
                     System.exit(0);
                 }
