@@ -6,8 +6,8 @@ public class Player {
     private int experience;
     private int xpToLvlUp = 100;
     private int health = 200;
-    private int experiencePerHit = 5;
     private int strength;
+    private int playerGold;
 
 
     public Player(String playerName) {
@@ -29,21 +29,37 @@ public class Player {
         this.experience += xp;
     }
 
-    public int getExperiencePerHit(){
-        return this.experiencePerHit;
-    }
-
     public int getHealth() {
         return this.health;
     }
     
     public int getStrength() {
-        return 5*getLevel();
+        return 15*getLevel();
     }
 
     public void getHit(int hit) {
         this.health -= hit;
     }
+
+    public void lootGold(int gold) {
+        this.playerGold += gold;
+    }
+
+    public int getGold() {
+        return this.playerGold;
+    }
+
+     public void useGold(int gold) {
+         this.playerGold -= gold;
+     }
+
+     public void useHealthPotion(int pot) {
+        this.health = pot;
+     }
+
+     public void useStrengthPotion(int pot) {
+        this.strength =+ pot;
+     }
 
     public void checkIfLevelUp() {
         int tempXp;

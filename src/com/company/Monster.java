@@ -10,6 +10,7 @@ public class Monster {
     private int strength;
     private int level = r.nextInt(10) + 1;
     private int experience;
+    private int gold = r.nextInt(20) + 1;
 
     public Monster(String name, int health, int experience) {
         this.name = name;
@@ -45,5 +46,9 @@ public class Monster {
 
     public int getExperience() {
         return this.experience;
+    }
+
+    public int getGold() {
+        return this.gold;
     }
 }

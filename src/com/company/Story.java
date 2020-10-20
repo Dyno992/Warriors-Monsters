@@ -14,15 +14,16 @@ public class Story {
             tempMonster.getsoundWhenHit();
             System.out.println(tColor_RED + "The monster hits you, dealing " + tempMonster.getStrength() + " damage." + tbColor_RESET);
             player.getHit(tempMonster.getStrength());
-            System.out.println(player.getName() + ": " + player.getHealth() + " Healthpoints left" + " and " + player.getExperiencePerHit() + " XP");
+            System.out.println(player.getName() + ": " + player.getHealth() + " Healthpoints left");
             System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left\n");
             if (player.getHealth() <= 0) {
                 System.out.println(tColor_RED + "You were killed by the monster!" + tbColor_RESET);
                 System.out.println(tColor_RED + "Game Over......\n" + tbColor_RESET);
                 System.exit(0);
             } else if (tempMonster.getHealth() <= 0) {
-                System.out.println(tColor_GREEN + "You killed the monster, gaining " + tempMonster.getExperience() + " experience!" + tbColor_RESET);
+                System.out.println(tColor_GREEN + "You killed the monster, gaining " + tempMonster.getExperience() + " experience and " + tempMonster.getGold() + " Gold!" + tbColor_RESET);
                 player.giveExperience(tempMonster.getExperience());
+                player.lootGold(tempMonster.getGold());
                 player.checkIfLevelUp();
                 System.out.println("You are level " + player.getLevel() + ", and you have " + player.getExperience() + " experience and " + player.getHealth() + " healthpoints!");
                 if (player.getLevel() == 10) {
