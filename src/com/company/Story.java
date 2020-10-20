@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Story {
     Scanner sc = new Scanner(System.in);
     public void fightScene(Monster tempMonster, Player player) {
-        System.out.println("Wow a wild " + tempMonster.getName() + " appeared!!!!!");
+        System.out.println("Wow a wild " + tempMonster.getName() + " level " + tempMonster.getLevel() +" appeared!!!!!");
         System.out.println("[Press enter to hit the monster]");
         while (true) {
             sc.nextLine();
