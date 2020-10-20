@@ -69,8 +69,9 @@ public class Game {
         System.out.println(tColor_YELLOW + "\nMenu:" + tbColor_RESET);
         System.out.println(tColor_GREEN + "1. Go adventuring" + tbColor_RESET);
         System.out.println(tColor_BLUE + "2. Show details about your character" + tbColor_RESET);
-        System.out.println(tColor_CYAN + "3. Enter the shop" + tbColor_RESET);
-        System.out.println(tColor_RED + "3. Exit game" + tbColor_RESET);
+        System.out.println(tColor_PURPLE + "3. Show all Monsters details" + tbColor_RESET);
+        System.out.println(tColor_CYAN + "4. Enter the shop" + tbColor_RESET);
+        System.out.println(tColor_RED + "5. Exit game" + tbColor_RESET);
         System.out.print("\nMake your choice: ");
         switch (sc.nextLine()) {
             case "1":
@@ -106,9 +107,15 @@ public class Game {
                 openMenu();
                 break;
             case "3":
-                openShop();
+                allMonsters.stream().forEach(System.out::println);
+                System.out.println("[Press Enter to go back to the Menu]");
+                sc.nextLine();
+                openMenu();
                 break;
             case "4":
+                openShop();
+                break;
+            case "5":
                 System.out.println(tColor_RED + "Goodbye...☹ See you soon!!" + tbColor_RESET);
                 break;
             default:

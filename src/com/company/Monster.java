@@ -48,6 +48,14 @@ public class Monster {
         return this.experience;
     }
 
+    public String toString() {
+        if(this.health == 0) {
+            return this.getName() + "\nThis Monster is dead";
+        } else {
+            return this.getName() + "\nHealth: " + getHealth() + "\nLevel: " + getLevel();
+        }
+    }
+
     public int getGold() {
         return this.gold;
     }
