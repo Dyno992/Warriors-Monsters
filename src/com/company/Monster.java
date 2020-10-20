@@ -49,7 +49,7 @@ public class Monster {
     }
 
     public String toString() {
-        if(this.health == 0) {
+        if(this.health <= 0) {
             return this.getName() + "\nThis Monster is dead";
         } else {
             return this.getName() + "\nHealth: " + getHealth() + "\nLevel: " + getLevel();
