@@ -75,42 +75,13 @@ public class Game {
         System.out.print("\nMake your choice: ");
         switch (sc.nextLine()) {
             case "1":
-                int temp = r.nextInt(10) + 1;
-                    if (temp == 5) {
-                        System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
-                        System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to continue, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
-                        if (sc.nextLine().equals("y")) {
-                            Monster tempMonster;
-                            tempMonster = getRandomMonster();
-                            story.fightScene(tempMonster, player);
-                            continueOrNot();
-                        }else {
-                            openMenu();
-                        }
-                    } else {
-                        Monster tempMonster;
-                        tempMonster = getRandomMonster();
-                        story.fightScene(tempMonster, player);
-                        continueOrNot();
-                        }
-                    break;
+                goOnAdventure();
+                break;
             case "2":
-                System.out.println("*****************************\n"
-                        + "* Player Name: " + player.getName() + "\n"
-                        + "* Player Level: " + player.getLevel() + "\n"
-                        + "* Player Health: " + player.getHealth() + "/200\n"
-                        + "* Player Experience: " + player.getExperience() + "/100\n"
-                        + "* Player Gold: " + player.getGold() + "\n"
-                        + "*****************************");
-                System.out.println("[Press Enter to go back to the Menu]");
-                sc.nextLine();
-                openMenu();
+                playerDetails();
                 break;
             case "3":
-                allMonsters.stream().forEach(System.out::println);
-                System.out.println("[Press Enter to go back to the Menu]");
-                sc.nextLine();
-                openMenu();
+                monsterDetails();
                 break;
             case "4":
                 openShop();
@@ -140,12 +111,56 @@ public class Game {
                 openMenu();
             }
         }
+
         public void huntMonsters() {
             int tempNumber = r.nextInt(10) + 1;
             if (tempNumber == 5) {
                 System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
                 System.out.println("[Press Enter to continue]");
                 sc.nextLine();
+                huntMonsters();
+            } else {
+                Monster tempMonster;
+                tempMonster = getRandomMonster();
+                story.fightScene(tempMonster, player);
+                continueOrNot();
+            }
+        }
+
+        public void playerDetails() {
+            System.out.println("*****************************\n"
+                    + "* Player Name: " + player.getName() + "\n"
+                    + "* Player Level: " + player.getLevel() + "\n"
+                    + "* Player Health: " + player.getHealth() + "/200\n"
+                    + "* Player Experience: " + player.getExperience() + "/100\n"
+                    + "* Player Gold: " + player.getGold() + "\n"
+                    + "* Player Strength: " + player.getStrength() + "\n"
+                    + "*****************************");
+            System.out.println("[Press Enter to go back to the Menu]");
+            sc.nextLine();
+            openMenu();
+        }
+
+        public void monsterDetails() {
+            allMonsters.stream().forEach(System.out::println);
+            System.out.println("[Press Enter to go back to the Menu]");
+            sc.nextLine();
+            openMenu();
+        }
+
+        public void goOnAdventure() {
+            int temp = r.nextInt(10) + 1;
+            if (temp == 5) {
+                System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
+                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to continue, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
+                if (sc.nextLine().equals("y")) {
+                    Monster tempMonster;
+                    tempMonster = getRandomMonster();
+                    story.fightScene(tempMonster, player);
+                    continueOrNot();
+                }else {
+                    openMenu();
+                }
             } else {
                 Monster tempMonster;
                 tempMonster = getRandomMonster();
@@ -158,7 +173,7 @@ public class Game {
         int healthPotPrice = 5;
         int healthFromPot = 200;
         int strengthPotPrice = 5;
-        int strengthFromPot = 30;
+        int strengthFromPot = 5;
             System.out.println("\n----------------------------------------------------------");
             System.out.println("\nWelcome to the shop. What do you want to purchase?");
             System.out.println("\nPress number of the desired item.");

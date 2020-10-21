@@ -6,7 +6,7 @@ public class Player {
     private int experience;
     private int xpToLvlUp = 100;
     private int health = 200;
-    private int strength;
+    private int strength = 15;
     private int playerGold;
 
 
@@ -34,7 +34,7 @@ public class Player {
     }
     
     public int getStrength() {
-        return 15*getLevel();
+        return this.strength*getLevel();
     }
 
     public void getHit(int hit) {
@@ -58,17 +58,13 @@ public class Player {
      }
 
      public void useStrengthPotion(int pot) {
-        this.strength =+ pot;
+         this.strength = this.strength + pot;
      }
 
     public void checkIfLevelUp() {
-        int tempXp;
         if (experience >= xpToLvlUp){
             level++;
-            tempXp = experience;
-            tempXp = tempXp - 100;
-            experience = 0;
-            experience = tempXp;
+            experience -= 100;
             System.out.println("You leveled up, and are now level "+ getLevel());
         }
     }

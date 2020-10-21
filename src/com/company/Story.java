@@ -16,6 +16,7 @@ public class Story {
             player.getHit(tempMonster.getStrength());
             System.out.println(player.getName() + ": " + player.getHealth() + " Healthpoints left");
             System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left\n");
+            System.out.println("[Press enter to hit the monster]");
             if (player.getHealth() <= 0) {
                 System.out.println(tColor_RED + "You were killed by the monster!" + tbColor_RESET);
                 System.out.println(tColor_RED + "Game Over......\n" + tbColor_RESET);
