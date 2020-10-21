@@ -18,9 +18,9 @@ public class Game {
     List<Monster> allMonsters = new ArrayList<>();
     Random r = new Random();
     Story story = new Story();
-    Monster monster1 = new Monster(tColor_PURPLE + "➤ Orc" + tbColor_RESET, 50,100);
-    Monster monster2 = new Monster(tColor_PURPLE + "➤ Dyno992" + tbColor_RESET, 50,100);
-    Monster monster3 = new Monster(tColor_PURPLE + "➤ Spetzim" + tbColor_RESET, 50,100);
+    Monster monster1 = new Monster(tColor_PURPLE + "➤ Orc" + tbColor_RESET, 50, 100);
+    Monster monster2 = new Monster(tColor_PURPLE + "➤ Dyno992" + tbColor_RESET, 50, 100);
+    Monster monster3 = new Monster(tColor_PURPLE + "➤ Spetzim" + tbColor_RESET, 50, 100);
     Ogre ogre1 = new Ogre(tColor_PURPLE + "➤ Bigfoot" + tbColor_RESET, 75, 150);
     Ogre ogre2 = new Ogre(tColor_PURPLE + "➤ Chupacabra" + tbColor_RESET, 75, 150);
     Ogre ogre3 = new Ogre(tColor_PURPLE + "➤ Werewolf" + tbColor_RESET, 75, 150);
@@ -42,7 +42,7 @@ public class Game {
     public static final String tColor_BOLDBLUE = "\033[1;34m";
     public static final String tColor_BOLDPURPLE = "\033[1;35m";
     public static final String tColor_BOLDWHITE = "\u001B[30m";
-    public static final String tColor_BOLDYELLOW ="\033[1;33m";
+    public static final String tColor_BOLDYELLOW = "\033[1;33m";
     // text background color
     public static final String bColor_BLACK = "\u001B[40m";
     public static final String bColor_RED = "\u001B[41m";
@@ -75,7 +75,7 @@ public class Game {
         System.out.println(tColor_BOLDYELLOW + "2. Load last saved game" + tbColor_RESET);
         System.out.print("\nMake your choice: ");
         boolean loop = true;
-        while(loop) {
+        while (loop) {
             switch (sc.nextLine()) {
                 case "1":
                     System.out.print("\nEnter your name: ");
@@ -128,139 +128,165 @@ public class Game {
                 openMenu();
         }
     }
-        public Monster getRandomMonster() {
-        Monster tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
-           if (tempMonster.getHealth() <= 0){
-               tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
-            }
-            return tempMonster;
-        }
 
-        public void continueOrNot() throws IOException, ClassNotFoundException {
-            System.out.println("Do you want to continue your adventures?\n");
-            System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "for yes, press anything else to go back to the " + tColor_YELLOW +"menu." + tbColor_RESET);
-            if(sc.nextLine().equals("y")){
-                huntMonsters();
-            }else{
+    public Monster getRandomMonster() {
+        Monster tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
+        if (tempMonster.getHealth() <= 0) {
+            tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
+        }
+        return tempMonster;
+    }
+
+    public void continueOrNot() throws IOException, ClassNotFoundException {
+        System.out.println("Do you want to continue your adventures?\n");
+        System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "for yes, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
+        if (sc.nextLine().equals("y")) {
+            huntMonsters();
+        } else {
+            openMenu();
+        }
+    }
+
+    public void huntMonsters() throws IOException, ClassNotFoundException {
+        int tempNumber = r.nextInt(10) + 1;
+        if (tempNumber == 5) {
+            System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
+            System.out.println("[Press Enter to continue]");
+            sc.nextLine();
+            huntMonsters();
+        } else {
+            Monster tempMonster;
+            tempMonster = getRandomMonster();
+            story.fightScene(tempMonster, player);
+            if (player.checkIfMaxLevel()) {
+                sc.nextLine();
+                printRemainingMonstersAndCredits();
+            }
+            continueOrNot();
+        }
+    }
+
+    public void playerDetails() throws IOException, ClassNotFoundException {
+        System.out.println("*****************************\n"
+                + "* Player Name: " + player.getName() + "\n"
+                + "* Player Level: " + player.getLevel() + "\n"
+                + "* Player Health: " + player.getHealth() + "/200\n"
+                + "* Player Experience: " + player.getExperience() + "/100\n"
+                + "* Player Gold: " + player.getGold() + "\n"
+                + "* Player Strength: " + player.getStrength() + "\n"
+                + "*****************************");
+        System.out.println("[Press Enter to go back to the Menu]");
+        sc.nextLine();
+        openMenu();
+    }
+
+    public void monsterDetails() throws IOException, ClassNotFoundException {
+        allMonsters.stream().forEach(System.out::println);
+        System.out.println("[Press Enter to go back to the Menu]");
+        sc.nextLine();
+        openMenu();
+    }
+
+    public void goOnAdventure() throws IOException, ClassNotFoundException {
+        int temp = r.nextInt(10) + 1;
+        if (temp == 5) {
+            System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
+            System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to continue, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
+            if (sc.nextLine().equals("y")) {
+                Monster tempMonster;
+                tempMonster = getRandomMonster();
+                story.fightScene(tempMonster, player);
+                if (player.checkIfMaxLevel()) {
+                    sc.nextLine();
+                    printRemainingMonstersAndCredits();
+                }
+                continueOrNot();
+            } else {
                 openMenu();
             }
-        }
-
-        public void huntMonsters() throws IOException, ClassNotFoundException {
-            int tempNumber = r.nextInt(10) + 1;
-            if (tempNumber == 5) {
-                System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
-                System.out.println("[Press Enter to continue]");
+        } else {
+            Monster tempMonster;
+            tempMonster = getRandomMonster();
+            story.fightScene(tempMonster, player);
+            if (player.checkIfMaxLevel()) {
                 sc.nextLine();
-                huntMonsters();
-            } else {
-                Monster tempMonster;
-                tempMonster = getRandomMonster();
-                story.fightScene(tempMonster, player);
-                continueOrNot();
+                printRemainingMonstersAndCredits();
             }
+            continueOrNot();
         }
+    }
 
-        public void playerDetails() throws IOException, ClassNotFoundException {
-            System.out.println("*****************************\n"
-                    + "* Player Name: " + player.getName() + "\n"
-                    + "* Player Level: " + player.getLevel() + "\n"
-                    + "* Player Health: " + player.getHealth() + "/200\n"
-                    + "* Player Experience: " + player.getExperience() + "/100\n"
-                    + "* Player Gold: " + player.getGold() + "\n"
-                    + "* Player Strength: " + player.getStrength() + "\n"
-                    + "*****************************");
-            System.out.println("[Press Enter to go back to the Menu]");
-            sc.nextLine();
-            openMenu();
-        }
+    public void saveGame() throws IOException, FileNotFoundException {
+        ObjectOutputStream savePlayer = new ObjectOutputStream(new FileOutputStream("Player.txt"));
+        savePlayer.writeObject(player);
+        ObjectOutputStream saveMonsters = new ObjectOutputStream(new FileOutputStream("Monster.txt"));
+        saveMonsters.writeObject(allMonsters);
+        savePlayer.close();
+        saveMonsters.close();
+    }
 
-        public void monsterDetails() throws IOException, ClassNotFoundException {
-            allMonsters.stream().forEach(System.out::println);
-            System.out.println("[Press Enter to go back to the Menu]");
-            sc.nextLine();
-            openMenu();
-        }
-
-        public void goOnAdventure() throws IOException, ClassNotFoundException {
-            int temp = r.nextInt(10) + 1;
-            if (temp == 5) {
-                System.out.println(tColor_PURPLE + "Didn't find any monsters" + tbColor_RESET);
-                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to continue, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
-                if (sc.nextLine().equals("y")) {
-                    Monster tempMonster;
-                    tempMonster = getRandomMonster();
-                    story.fightScene(tempMonster, player);
-                    continueOrNot();
-                }else {
-                    openMenu();
-                }
-            } else {
-                Monster tempMonster;
-                tempMonster = getRandomMonster();
-                story.fightScene(tempMonster, player);
-                continueOrNot();
-            }
-        }
-
-        public void saveGame() throws IOException, FileNotFoundException {
-            ObjectOutputStream savePlayer = new ObjectOutputStream(new FileOutputStream("Player.txt"));
-            savePlayer.writeObject(player);
-            ObjectOutputStream saveMonsters = new ObjectOutputStream(new FileOutputStream("Monster.txt"));
-            saveMonsters.writeObject(allMonsters);
-        }
-
-        public void loadGame() throws IOException, ClassNotFoundException, FileNotFoundException {
+    public void loadGame() throws IOException, ClassNotFoundException, FileNotFoundException {
         ObjectInputStream load = new ObjectInputStream(new FileInputStream("Player.txt"));
-            player = (Player) load.readObject();
+        player = (Player) load.readObject();
+        load.close();
+        ObjectInputStream loadMonster = new ObjectInputStream(new FileInputStream("Monster.txt"));
+        allMonsters = (List<Monster>) loadMonster.readObject();
+        loadMonster.close();
+    }
 
-            ObjectInputStream loadMonster = new ObjectInputStream(new FileInputStream("Monster.txt"));
-            allMonsters = (List<Monster>) loadMonster.readObject();
-        }
-
-        public void openShop() throws IOException, ClassNotFoundException {
+    public void openShop() throws IOException, ClassNotFoundException {
         int healthPotPrice = 5;
         int healthFromPot = 200;
         int strengthPotPrice = 5;
         int strengthFromPot = 5;
-            System.out.println("\n----------------------------------------------------------");
-            System.out.println("\nWelcome to the shop. What do you want to purchase?");
-            System.out.println("\nPress number of the desired item.");
-            System.out.println("1. " + tColor_CYAN + "Healthpotion" + tbColor_RESET + " (Gives your maxhealth). Price: " + tColor_GREEN + healthPotPrice + tbColor_RESET);
-            System.out.println("2. " + tColor_RED + "Strengthpotion" + tbColor_RESET + " (Gives your extra attack power). Price: " + tColor_GREEN + strengthPotPrice + tbColor_RESET);
-            int selection = sc.nextInt();
-            if (selection == 1) {
-                if (player.getGold() >= healthPotPrice) {
-                    player.useGold(healthPotPrice);
-                    player.useHealthPotion(healthFromPot);
-                    System.out.println("You successfully bought a " + tColor_CYAN + "Healthpotion" + tbColor_RESET +"! You have now " + player.getHealth() + tColor_CYAN + " Healthpoints " + tbColor_RESET + "and " +player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
-                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-                } else if (player.getGold() < healthPotPrice) {
-                    System.out.println("You dont have enough gold to purchase this item.");
-                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-                }
-            }else if (selection == 2){
-                if (player.getGold() >= strengthPotPrice) {
-                    player.useGold(strengthPotPrice);
-                    player.useStrengthPotion(strengthFromPot);
-                    System.out.println("You successfully bought a " + tColor_RED + "Strengthpotion" + tbColor_RESET +"! You have now " + player.getStrength() + tColor_RED + " attacking power" + tbColor_RESET +" and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
-                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-                } else if (player.getGold() < strengthPotPrice) {
-                    System.out.println("You dont have enough gold to purchase this item.");
-                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-                }
-            } else {
-                System.out.println("You didnt choose anything. Redirecting you to the main menu.");
-                System.out.println("[Press Enter to continue]");
-                sc.nextLine();
-                openMenu();
+        System.out.println("\n----------------------------------------------------------");
+        System.out.println("\nWelcome to the shop. What do you want to purchase?");
+        System.out.println("You have " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET);
+        System.out.println("\nPress number of the desired item.");
+        System.out.println("1. " + tColor_CYAN + "Healthpotion" + tbColor_RESET + " (Gives your maxhealth). Price: " + tColor_GREEN + healthPotPrice + tbColor_RESET);
+        System.out.println("2. " + tColor_RED + "Strengthpotion" + tbColor_RESET + " (Gives your extra attack power). Price: " + tColor_GREEN + strengthPotPrice + tbColor_RESET);
+        int selection = sc.nextInt();
+        if (selection == 1) {
+            if (player.getGold() >= healthPotPrice) {
+                player.useGold(healthPotPrice);
+                player.useHealthPotion(healthFromPot);
+                System.out.println("You successfully bought a " + tColor_CYAN + "Healthpotion" + tbColor_RESET + "! You have now " + player.getHealth() + tColor_CYAN + " Healthpoints " + tbColor_RESET + "and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
+                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+            } else if (player.getGold() < healthPotPrice) {
+                System.out.println("You dont have enough gold to purchase this item.");
+                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
             }
+        } else if (selection == 2) {
+            if (player.getGold() >= strengthPotPrice) {
+                player.useGold(strengthPotPrice);
+                player.useStrengthPotion(strengthFromPot);
+                System.out.println("You successfully bought a " + tColor_RED + "Strengthpotion" + tbColor_RESET + "! You have now " + player.getStrength() + tColor_RED + " attacking power" + tbColor_RESET + " and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
+                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+            } else if (player.getGold() < strengthPotPrice) {
+                System.out.println("You dont have enough gold to purchase this item.");
+                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+            }
+        } else {
+            System.out.println("You didnt choose anything. Redirecting you to the main menu.");
+            System.out.println("[Press Enter to continue]");
             sc.nextLine();
-            if(sc.nextLine().equals("y")){
-                openShop();
-            }else {
-                openMenu();
-            }
+            openMenu();
+        }
+        sc.nextLine();
+        if (sc.nextLine().equals("y")) {
+            openShop();
+        } else {
+            openMenu();
         }
     }
+
+    public void printRemainingMonstersAndCredits() {
+        allMonsters
+                .stream()
+                .filter(Monster -> Monster.getHealth() >= 0)
+                .forEach(System.out::println);
+        System.out.println("\n " + bColor_BLACK + tColor_RED + "Credits : Besim & Dino made this crazy ass super mega nice game" + tbColor_RESET);
+        System.exit(0);
+    }
+}
 

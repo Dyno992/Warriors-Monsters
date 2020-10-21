@@ -7,10 +7,11 @@ public class Player implements Serializable {
     private String playerName = "";
     private int level = 1;
     private int experience;
-    private int xpToLvlUp = 100;
     private int health = 200;
     private int strength = 15;
     private int playerGold;
+    public static final String tColor_GREEN = "\u001B[32m";
+    public static final String tbColor_RESET = "\u001B[0m";
 
 
     public Player(String playerName) {
@@ -28,6 +29,7 @@ public class Player implements Serializable {
     public int getExperience() {
         return this.experience;
     }
+
     public void giveExperience(int xp) {
         this.experience += xp;
     }
@@ -35,9 +37,9 @@ public class Player implements Serializable {
     public int getHealth() {
         return this.health;
     }
-    
+
     public int getStrength() {
-        return this.strength*getLevel();
+        return this.strength * getLevel();
     }
 
     public void getHit(int hit) {
@@ -52,23 +54,38 @@ public class Player implements Serializable {
         return this.playerGold;
     }
 
-     public void useGold(int gold) {
-         this.playerGold -= gold;
-     }
+    public void useGold(int gold) {
+        this.playerGold -= gold;
+    }
 
-     public void useHealthPotion(int pot) {
+    public void useHealthPotion(int pot) {
         this.health = pot;
-     }
+    }
 
-     public void useStrengthPotion(int pot) {
-         this.strength = this.strength + pot;
-     }
+    public void useStrengthPotion(int pot) {
+        this.strength = this.strength + pot;
+    }
 
     public void checkIfLevelUp() {
-        if (experience >= xpToLvlUp){
+        int xpToLvlUp = 100;
+        if (experience >= xpToLvlUp) {
             level++;
             experience -= 100;
-            System.out.println("You leveled up, and are now level "+ getLevel());
+            if(experience >= xpToLvlUp){
+                level++;
+                experience -= 100;
+            }
+            System.out.println("You leveled up, and are now level " + getLevel());
         }
+    }
+
+    public boolean checkIfMaxLevel() {
+        boolean endGame = false;
+        if (getLevel() == 10 || getLevel() > 10) {
+            System.out.println("\n" + tColor_GREEN + "Congratulations!" + tbColor_RESET + " You are max level and have just won the game!!!");
+            System.out.println("[Press Enter to see the remaining monsters and credits]");
+            endGame = true;
+        }
+        return endGame;
     }
 }

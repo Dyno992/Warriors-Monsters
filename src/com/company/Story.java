@@ -7,7 +7,8 @@ public class Story {
     public void fightScene(Monster tempMonster, Player player) {
         System.out.println("Wow a wild " + tempMonster.getName() + " level " + tempMonster.getLevel() +" appeared!!!!!");
         System.out.println("[Press enter to hit the monster]");
-        while (true) {
+        boolean fight = true;
+        while (fight) {
             sc.nextLine();
             System.out.println(tColor_GREEN + "You hit the monster, dealing " + player.getStrength() + " damage." + tbColor_RESET);
             tempMonster.getHit(player.getStrength());
@@ -27,23 +28,10 @@ public class Story {
                 player.lootGold(tempMonster.getGold());
                 player.checkIfLevelUp();
                 System.out.println("You are level " + player.getLevel() + ", and you have " + player.getExperience() + " experience and " + player.getHealth() + " healthpoints!");
-                if (player.getLevel() == 10) {
-                    System.out.println(tColor_GREEN + "Congratulations! " + tbColor_RESET + tColor_BOLDYELLOW + "You are max level and have just won over the Monsters!!!\n" + tbColor_RESET);
-                    System.out.println("[Press Enter to see the remaining monsters and credits]");
-                    sc.nextLine();
-                    printRemainingMonstersAndCredits();
-                    sc.nextLine();
-                    System.exit(0);
+                fight = false;
                 }
-                return;
             }
         }
-    }
-
-    private void printRemainingMonstersAndCredits() {
-
-    }
-
     // text colors
     public static final String tbColor_RESET = "\u001B[0m";
     public static final String tColor_RED = "\u001B[31m";
