@@ -29,13 +29,19 @@ public class Story {
                 System.out.println("You are level " + player.getLevel() + ", and you have " + player.getExperience() + " experience and " + player.getHealth() + " healthpoints!");
                 if (player.getLevel() == 10) {
                     System.out.println(tColor_GREEN + "Congratulations! " + tbColor_RESET + tColor_BOLDYELLOW + "You are max level and have just won over the Monsters!!!\n" + tbColor_RESET);
-                    System.out.println("[Press Enter to exit the game]");
+                    System.out.println("[Press Enter to see the remaining monsters and credits]");
+                    sc.nextLine();
+                    printRemainingMonstersAndCredits();
                     sc.nextLine();
                     System.exit(0);
                 }
                 return;
             }
         }
+    }
+
+    private void printRemainingMonstersAndCredits() {
+
     }
 
     // text colors

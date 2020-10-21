@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Monster {
+public class Monster implements Serializable {
     Random r = new Random();
     private String name;
     private String call = "URGHHH * SLuRp * ";

@@ -21,7 +21,7 @@ och då den som missar får inga xp och gör ingen damage till motståndaren.
 
 Buggar:
 
-1) Efter at ha dödat en monster den kan komma upp igen och få t.ex -10 etc... healthpoints,
+1) Efter at ha dödat en monster den kan komma upp igen och få t.ex -10 etc... healthpoints,  // fixad
 vi behöver göra så att man inte kan ta en död monster,ogre,dragon.
 
 2) Göra så att healthpoints inte kan vara mindre än 0 points.
