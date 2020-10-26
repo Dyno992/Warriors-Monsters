@@ -39,6 +39,11 @@ public class Description {
         window.setResizable(false);
         window.setVisible(true);
 
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - window.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - window.getHeight()) / 2);
+        window.setLocation(x, 150);
+
         con = window.getContentPane();
 
         // --------------------------------------------- TITLE ---------------------------------------------------------
@@ -59,7 +64,7 @@ public class Description {
         welcomeTextLabel.setForeground(Color.white);
         welcomeTextLabel.setFont(normalFont);
 
-        // ------------------------------------------ READ TITLE --------------------------------------------------
+        // --------------------------------------------- READ TITLE ----------------------------------------------------
         // Text Panel
         nameTextPanel = new JPanel();
         nameTextPanel.setBounds(110, 180, 600, 40);
@@ -70,7 +75,7 @@ public class Description {
         nameTextLabel.setForeground(Color.white);
         nameTextLabel.setFont(normalFont);
 
-        /// -------------------------------------------- READ BUTTON --------------------------------------------------
+        /// -------------------------------------------- READ BUTTON ---------------------------------------------------
         // Panel
         readButtonPanel = new JPanel();
         readButtonPanel.setBounds(350, 230, 100, 40);
