@@ -12,7 +12,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Game {
-
+    /**
+     * Adding essentials for the game to work
+     * Player
+     * Monsters
+     * Colors
+     * List
+     * Storyline
+     */
     // text colors
     public static final String tbColor_RESET = "\u001B[0m";
     public static final String tColor_RED = "\u001B[31m";
@@ -43,7 +50,10 @@ public class Game {
     Dragon dragon3 = new Dragon(tColor_PURPLE + "➤ Brenton" + tbColor_RESET, 100, 200);
     Player player;
 
-    public void initializeGame() throws IOException, ClassNotFoundException {
+    /**
+     * Method to add all different monsters into a List
+     */
+    public void initializeMonsters() throws IOException, ClassNotFoundException {
         allMonsters.add(monster1);
         allMonsters.add(monster2);
         allMonsters.add(monster3);
@@ -55,6 +65,13 @@ public class Game {
         allMonsters.add(dragon3);
     }
 
+    /**
+     * Method for the first initalazation of the game, choose new or load game.
+     * Includes switchcase menu for 2 different options.
+     * throws IOException and ClassNotFoundException because of the saveGame and loadGame Methods
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void lobby() throws IOException, ClassNotFoundException {
         System.out.println(tColor_BOLDWHITE + "\n****************➤*****************" + tbColor_RESET + "\n"
                 + tColor_BOLDWHITE + "❂" + tbColor_RESET
@@ -71,7 +88,7 @@ public class Game {
                     System.out.print("\nEnter your name: ");
                     player = new Player(tColor_BLUE + "❂ " + sc.nextLine() + tbColor_RESET);
                     loop = false;
-                    initializeGame();
+                    initializeMonsters();
                     break;
                 case "2":
                     loadGame();
@@ -84,7 +101,12 @@ public class Game {
         }
     }
 
-    public void openMenu() throws IOException, ClassNotFoundException, FileNotFoundException {
+    /**
+     * Method to hold the menu open in the game.
+     * Switchcase menu for the different options.
+     * throws IOEXception and ClassNotFoundException for the saveGame and loadGame methods to work.
+     */
+    public void openMenu() throws IOException, ClassNotFoundException {
         System.out.println(tColor_YELLOW + "\nMenu:" + tbColor_RESET);
         System.out.println(tColor_GREEN + "1. Go adventuring" + tbColor_RESET);
         System.out.println(tColor_BLUE + "2. Show details about your character" + tbColor_RESET);
@@ -197,7 +219,7 @@ public class Game {
         }
     }
 
-    public void saveGame() throws IOException, FileNotFoundException {
+    public void saveGame() throws IOException {
         ObjectOutputStream savePlayer = new ObjectOutputStream(new FileOutputStream("Player.txt"));
         savePlayer.writeObject(player);
         ObjectOutputStream saveMonsters = new ObjectOutputStream(new FileOutputStream("Monster.txt"));
@@ -206,7 +228,7 @@ public class Game {
         saveMonsters.close();
     }
 
-    public void loadGame() throws IOException, ClassNotFoundException, FileNotFoundException {
+    public void loadGame() throws IOException, ClassNotFoundException {
         ObjectInputStream load = new ObjectInputStream(new FileInputStream("Player.txt"));
         player = (Player) load.readObject();
         load.close();
