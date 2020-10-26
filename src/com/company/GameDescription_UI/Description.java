@@ -135,7 +135,7 @@ public class Description {
 
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("The game is based on getting to the final level of the game to win, where you have to kill Monsters but some monsters are harder to kill, so you will need to buy items in the shop to get to the last level and not get killed from Monsters. The game was made for school purposes but will be updated with a user interface in the future.\n\nHope you enjoyed it, greetings!");
+        mainTextArea = new JTextArea("The game is based on getting to the final level of the game to win, where\nyou have to kill Monsters but some monsters are harder to kill, so you will need to buy items in the shop to get to the last level and not get killed from Monsters. The game was made for school purposes but will be updated\nwith a user interface in the future.\n\nHope you enjoyed it, greetings!");
         mainTextArea.setBounds(100, 100, 600, 250);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
