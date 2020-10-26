@@ -4,13 +4,19 @@ import java.util.Scanner;
 
 public class Story {
 
-    // text colors
+    /**
+     * Setting text colors and making a scanner.
+     */
     public static final String tbColor_RESET = "\u001B[0m";
     public static final String tColor_RED = "\u001B[31m";
     public static final String tColor_GREEN = "\u001B[32m";
-
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * Method to printout fightscene when you encounter a monster.
+     * @param tempMonster
+     * @param player
+     */
     public void fightScene(Monster tempMonster, Player player) {
         System.out.println("Wow a wild " + tempMonster.getName() + " level " + tempMonster.getLevel() + " appeared!!!!!");
         System.out.println("[Press enter to hit the monster]");

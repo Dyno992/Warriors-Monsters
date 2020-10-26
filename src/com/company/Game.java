@@ -53,7 +53,7 @@ public class Game {
     /**
      * Method to add all different monsters into a List
      */
-    public void initializeMonsters() throws IOException, ClassNotFoundException {
+    public void initializeMonsters() {
         allMonsters.add(monster1);
         allMonsters.add(monster2);
         allMonsters.add(monster3);
@@ -132,6 +132,10 @@ public class Game {
         }
     }
 
+    /**
+     * Gets a random monster from the allMonsters List
+     * @return a random monster randomized by the randomclass
+     */
     public Monster getRandomMonster() {
         Monster tempMonster = allMonsters.get(r.nextInt(allMonsters.size()));
         if (tempMonster.getHealth() <= 0) {
@@ -140,6 +144,11 @@ public class Game {
         return tempMonster;
     }
 
+    /**
+     * Method to ask user if they want to continue to search monsters after a fight.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void continueOrNot() throws IOException, ClassNotFoundException {
         System.out.println("Do you want to continue your adventures?\n");
         System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "for yes, press anything else to go back to the " + tColor_YELLOW + "menu." + tbColor_RESET);
@@ -150,6 +159,12 @@ public class Game {
         }
     }
 
+    /**
+     * Method to hunt monsters, also a if else for a 10% chance you dont find a monster and have to search again.
+     * if you find a monster we call for the getRandomMonster() and fightScene()
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void huntMonsters() throws IOException, ClassNotFoundException {
         int tempNumber = r.nextInt(10) + 1;
         if (tempNumber == 5) {
@@ -169,6 +184,11 @@ public class Game {
         }
     }
 
+    /**
+     * Prints out all details about the player.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void playerDetails() throws IOException, ClassNotFoundException {
         System.out.println("***************" + tColor_BLUE + " YOUR CHARACTER "+ tbColor_RESET + "**************\n"
                 + "* Player Name: " + player.getName() + "\n"
@@ -183,6 +203,11 @@ public class Game {
         openMenu();
     }
 
+    /**
+     * Prints out all the details about the monsters.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void monsterDetails() throws IOException, ClassNotFoundException {
         allMonsters.stream().forEach(System.out::println);
         System.out.println("[Press Enter to go back to the Menu]");
@@ -190,6 +215,11 @@ public class Game {
         openMenu();
     }
 
+    /**
+     * first initation of hunting monsters.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void goOnAdventure() throws IOException, ClassNotFoundException {
         int temp = r.nextInt(10) + 1;
         if (temp == 5) {
@@ -219,6 +249,10 @@ public class Game {
         }
     }
 
+    /**
+     * Method to save the player and monster details.
+     * @throws IOException
+     */
     public void saveGame() throws IOException {
         ObjectOutputStream savePlayer = new ObjectOutputStream(new FileOutputStream("Player.txt"));
         savePlayer.writeObject(player);
@@ -228,6 +262,11 @@ public class Game {
         saveMonsters.close();
     }
 
+    /**
+     * Method to load the player and monster details
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void loadGame() throws IOException, ClassNotFoundException {
         ObjectInputStream load = new ObjectInputStream(new FileInputStream("Player.txt"));
         player = (Player) load.readObject();
@@ -237,6 +276,11 @@ public class Game {
         loadMonster.close();
     }
 
+    /**
+     * Method to open the shop and choose between different potions that increase player health or player strength
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void openShop() throws IOException, ClassNotFoundException {
         int healthPotPrice = 5;
         int healthFromPot = 200;
@@ -304,6 +348,9 @@ public class Game {
         }
     }
 
+    /**
+     * Prints out all the monsters when you win the game. Also endgame credits
+     */
     public void printRemainingMonstersAndCredits() {
         allMonsters
                 .stream()
