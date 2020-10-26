@@ -93,4 +93,9 @@ public class Player implements Serializable {
     public int setHealth(int health) {
         return this.health = health;
     }
+
+    public boolean equals(Object player) {
+        Player p1 = (Player) player;
+        return this.playerName.equals(p1.playerName);
+    }
 }

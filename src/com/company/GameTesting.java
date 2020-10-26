@@ -59,8 +59,23 @@ public class GameTesting {
         assertTrue(m1.getHealth() <= 0);
     }
 
-    public void isGameSaved() throws IOException {
+    @Test
+    @DisplayName("Testing if save & load function works propertly")
+    public void saveGameAndLoadGame() throws IOException, ClassNotFoundException {
+        Game game = new Game();
+        List<Monster> randomMonsters = new ArrayList<>();
+        Monster m1 = new Monster("Besim", 100, 200);
+        Monster m2 = new Monster("Dino", 100, 200);
+        Monster m3 = new Monster("David", 100, 200);
+        randomMonsters.add(m1);
+        randomMonsters.add(m2);
+        randomMonsters.add(m3);
+        Player testPlayer = new Player("testBesim");
+        game.saveGame(testPlayer, randomMonsters);
+        game.loadGame();
 
+        assertEquals(game.player, testPlayer);
+        assertEquals(game.allMonsters, randomMonsters);
 
     }
 

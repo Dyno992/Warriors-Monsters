@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -84,19 +83,20 @@ public class Game {
         boolean loop = true;
         while (loop) {
             switch (sc.nextLine()) {
-                case "1":
+                case "1" -> {
                     System.out.print("\nEnter your name: ");
                     player = new Player(tColor_BLUE + "❂ " + sc.nextLine() + tbColor_RESET);
                     loop = false;
                     initializeMonsters();
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     loadGame();
                     loop = false;
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println(tColor_RED + "You didn't choose anything..." + tbColor_RESET);
                     System.out.println(tColor_RED + "Try again!" + tbColor_RESET);
+                }
             }
         }
     }
@@ -121,7 +121,7 @@ public class Game {
             case "3" -> monsterDetails();
             case "4" -> openShop();
             case "5" -> {
-                saveGame();
+                saveGame(player, allMonsters);
                 System.out.println(tColor_GREEN + "Saving.....See you another time. :)" + tbColor_RESET);
             }
             case "6" -> System.out.println(tColor_RED + "Goodbye...☹ See you soon!!" + tbColor_RESET);
@@ -253,11 +253,11 @@ public class Game {
      * Method to save the player and monster details.
      * @throws IOException
      */
-    public void saveGame() throws IOException {
+    public void saveGame(Player p, List<Monster> m) throws IOException {
         ObjectOutputStream savePlayer = new ObjectOutputStream(new FileOutputStream("Player.txt"));
-        savePlayer.writeObject(player);
+        savePlayer.writeObject(p);
         ObjectOutputStream saveMonsters = new ObjectOutputStream(new FileOutputStream("Monster.txt"));
-        saveMonsters.writeObject(allMonsters);
+        saveMonsters.writeObject(m);
         savePlayer.close();
         saveMonsters.close();
     }

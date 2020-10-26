@@ -69,4 +69,14 @@ public class Monster implements Serializable {
     public int setHealth(int health) {
         return this.health = health;
     }
+
+    public boolean equals(Object monster) {
+        Monster m1 = (Monster) monster;
+        return m1.name.equals(this.name) &&
+                m1.level == this.level &&
+                m1.health == this.health &&
+                m1.experience == this.experience &&
+                m1.gold == this.gold &&
+                m1.strength == this.strength;
+    }
 }
