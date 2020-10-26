@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Monster implements Serializable {
+
+    // text colors
+    public static final String tbColor_RESET = "\u001B[0m";
+    public static final String tColor_RED = "\u001B[31m";
+
     Random r = new Random();
     private String name;
     private String call = "URGHHH * SLuRp * ";
@@ -49,15 +54,15 @@ public class Monster implements Serializable {
         return this.experience;
     }
 
+    public int getGold() {
+        return this.gold;
+    }
+
     public String toString() {
         if(this.health <= 0) {
-            return this.getName() + "\nThis Monster is dead";
+            return this.getName() + "\n" + tColor_RED + "This Monster is dead" + tbColor_RESET;
         } else {
             return this.getName() + "\nHealth: " + getHealth() + "\nLevel: " + getLevel();
         }
-    }
-
-    public int getGold() {
-        return this.gold;
     }
 }

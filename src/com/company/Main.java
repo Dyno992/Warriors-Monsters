@@ -9,7 +9,6 @@ public class Main {
         Game game = new Game();
         game.lobby();
         game.openMenu();
-
     }
 }
 

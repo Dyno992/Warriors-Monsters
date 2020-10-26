@@ -22,7 +22,4 @@ public class Dragon extends Monster {
     public int getGold() {
         return this.gold;
     }
-
-
-
 }

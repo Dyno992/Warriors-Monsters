@@ -10,9 +10,10 @@ public class Player implements Serializable {
     private int health = 200;
     private int strength = 15;
     private int playerGold;
+
+    // text colors
     public static final String tColor_GREEN = "\u001B[32m";
     public static final String tbColor_RESET = "\u001B[0m";
-
 
     public Player(String playerName) {
         this.playerName = playerName;

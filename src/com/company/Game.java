@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,8 +11,23 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
 public class Game {
+
+    // text colors
+    public static final String tbColor_RESET = "\u001B[0m";
+    public static final String tColor_RED = "\u001B[31m";
+    public static final String tColor_GREEN = "\u001B[32m";
+    public static final String tColor_YELLOW = "\u001B[33m";
+    public static final String tColor_BLUE = "\u001B[34m";
+    public static final String tColor_PURPLE = "\u001B[35m";
+    public static final String tColor_CYAN = "\u001B[36m";
+    // bold text colors
+    public static final String tColor_BOLDWHITE = "\u001B[30m";
+    public static final String tColor_BOLDYELLOW = "\033[1;33m";
+    public static final String tColor_BOLDRED = "\033[1;31m";
+    // text background color
+    public static final String bColor_BLACK = "\u001B[40m";
+
     Scanner sc = new Scanner(System.in);
     List<Monster> allMonsters = new ArrayList<>();
     Random r = new Random();
@@ -28,30 +42,6 @@ public class Game {
     Dragon dragon2 = new Dragon(tColor_PURPLE + "➤ Pendragon" + tbColor_RESET, 100, 200);
     Dragon dragon3 = new Dragon(tColor_PURPLE + "➤ Brenton" + tbColor_RESET, 100, 200);
     Player player;
-
-    // text colors
-    public static final String tbColor_RESET = "\u001B[0m";
-    public static final String tColor_RED = "\u001B[31m";
-    public static final String tColor_GREEN = "\u001B[32m";
-    public static final String tColor_YELLOW = "\u001B[33m";
-    public static final String tColor_BLUE = "\u001B[34m";
-    public static final String tColor_PURPLE = "\u001B[35m";
-    public static final String tColor_CYAN = "\u001B[36m";
-    public static final String tColor_WHITE = "\u001B[37m";
-    // bold text colors
-    public static final String tColor_BOLDBLUE = "\033[1;34m";
-    public static final String tColor_BOLDPURPLE = "\033[1;35m";
-    public static final String tColor_BOLDWHITE = "\u001B[30m";
-    public static final String tColor_BOLDYELLOW = "\033[1;33m";
-    // text background color
-    public static final String bColor_BLACK = "\u001B[40m";
-    public static final String bColor_RED = "\u001B[41m";
-    public static final String bColor_GREEN = "\u001B[42m";
-    public static final String bColor_YELLOW = "\u001B[43m";
-    public static final String bColor_BLUE = "\u001B[44m";
-    public static final String bColor_PURPLE = "\u001B[45m";
-    public static final String bColor_CYAN = "\u001B[46m";
-    public static final String bColor_WHITE = "\u001B[47m";
 
     public void initializeGame() throws IOException, ClassNotFoundException {
         allMonsters.add(monster1);
@@ -100,32 +90,23 @@ public class Game {
         System.out.println(tColor_BLUE + "2. Show details about your character" + tbColor_RESET);
         System.out.println(tColor_PURPLE + "3. Show all Monsters details" + tbColor_RESET);
         System.out.println(tColor_CYAN + "4. Enter the shop" + tbColor_RESET);
-        System.out.println(tColor_BOLDBLUE + "5. Save and exit game" + tbColor_RESET);
+        System.out.println(tColor_BOLDRED + "\n5. Save and exit game" + tbColor_RESET);
         System.out.println(tColor_RED + "6. Exit game" + tbColor_RESET);
         System.out.print("\nMake your choice: ");
         switch (sc.nextLine()) {
-            case "1":
-                goOnAdventure();
-                break;
-            case "2":
-                playerDetails();
-                break;
-            case "3":
-                monsterDetails();
-                break;
-            case "4":
-                openShop();
-                break;
-            case "5":
+            case "1" -> goOnAdventure();
+            case "2" -> playerDetails();
+            case "3" -> monsterDetails();
+            case "4" -> openShop();
+            case "5" -> {
                 saveGame();
-                System.out.println("Saving.....See you another time. :)");
-                break;
-            case "6":
-                System.out.println(tColor_RED + "Goodbye...☹ See you soon!!" + tbColor_RESET);
-                break;
-            default:
+                System.out.println(tColor_GREEN + "Saving.....See you another time. :)" + tbColor_RESET);
+            }
+            case "6" -> System.out.println(tColor_RED + "Goodbye...☹ See you soon!!" + tbColor_RESET);
+            default -> {
                 System.out.println(tColor_RED + "You didn't press anything..." + tbColor_RESET);
                 openMenu();
+            }
         }
     }
 
@@ -167,14 +148,14 @@ public class Game {
     }
 
     public void playerDetails() throws IOException, ClassNotFoundException {
-        System.out.println("*****************************\n"
+        System.out.println("***************" + tColor_BLUE + " YOUR CHARACTER "+ tbColor_RESET + "**************\n"
                 + "* Player Name: " + player.getName() + "\n"
                 + "* Player Level: " + player.getLevel() + "\n"
                 + "* Player Health: " + player.getHealth() + "/200\n"
                 + "* Player Experience: " + player.getExperience() + "/100\n"
                 + "* Player Gold: " + player.getGold() + "\n"
                 + "* Player Strength: " + player.getStrength() + "\n"
-                + "*****************************");
+                + "*********************************************");
         System.out.println("[Press Enter to go back to the Menu]");
         sc.nextLine();
         openMenu();
@@ -239,44 +220,65 @@ public class Game {
         int healthFromPot = 200;
         int strengthPotPrice = 5;
         int strengthFromPot = 5;
-        System.out.println("\n----------------------------------------------------------");
+        System.out.println("\n*------------------------*" + tColor_CYAN + " SHOP " + tbColor_RESET + "*--------------------------*");
         System.out.println("\nWelcome to the shop. What do you want to purchase?");
         System.out.println("You have " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET);
-        System.out.println("\nPress number of the desired item.");
+        System.out.println("\nPress number of the desired item. Or anything else if you want to be redirected to the" + tColor_YELLOW + " menu" + tbColor_RESET);
         System.out.println("1. " + tColor_CYAN + "Healthpotion" + tbColor_RESET + " (Gives your maxhealth). Price: " + tColor_GREEN + healthPotPrice + tbColor_RESET);
         System.out.println("2. " + tColor_RED + "Strengthpotion" + tbColor_RESET + " (Gives your extra attack power). Price: " + tColor_GREEN + strengthPotPrice + tbColor_RESET);
-        int selection = sc.nextInt();
-        if (selection == 1) {
-            if (player.getGold() >= healthPotPrice) {
-                player.useGold(healthPotPrice);
-                player.useHealthPotion(healthFromPot);
-                System.out.println("You successfully bought a " + tColor_CYAN + "Healthpotion" + tbColor_RESET + "! You have now " + player.getHealth() + tColor_CYAN + " Healthpoints " + tbColor_RESET + "and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
-                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-            } else if (player.getGold() < healthPotPrice) {
-                System.out.println("You dont have enough gold to purchase this item.");
-                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-            }
-        } else if (selection == 2) {
-            if (player.getGold() >= strengthPotPrice) {
-                player.useGold(strengthPotPrice);
-                player.useStrengthPotion(strengthFromPot);
-                System.out.println("You successfully bought a " + tColor_RED + "Strengthpotion" + tbColor_RESET + "! You have now " + player.getStrength() + tColor_RED + " attacking power" + tbColor_RESET + " and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
-                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-            } else if (player.getGold() < strengthPotPrice) {
-                System.out.println("You dont have enough gold to purchase this item.");
-                System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
-            }
-        } else {
-            System.out.println("You didnt choose anything. Redirecting you to the main menu.");
-            System.out.println("[Press Enter to continue]");
-            sc.nextLine();
-            openMenu();
-        }
-        sc.nextLine();
-        if (sc.nextLine().equals("y")) {
-            openShop();
-        } else {
-            openMenu();
+        String selection = sc.nextLine();
+        switch (selection) {
+            case "1":
+                if (player.getGold() >= healthPotPrice) {
+                    player.useGold(healthPotPrice);
+                    player.useHealthPotion(healthFromPot);
+                    System.out.println("You successfully bought a " + tColor_CYAN + "Healthpotion" + tbColor_RESET + "! You have now " + player.getHealth() + tColor_CYAN + " Healthpoints " + tbColor_RESET + "and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
+                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+                    String select = sc.nextLine();
+                    if ("y".equals(select)) {
+                        openShop();
+                    } else {
+                        openMenu();
+                    }
+                } else if (player.getGold() < healthPotPrice) {
+                    System.out.println(tColor_RED + "You dont have enough gold to purchase this item." + tbColor_RESET);
+                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+                    String select = sc.nextLine();
+                    if ("y".equals(select)) {
+                        openShop();
+                    } else {
+                        openMenu();
+                    }
+                }
+                break;
+            case "2":
+                if (player.getGold() >= strengthPotPrice) {
+                    player.useGold(strengthPotPrice);
+                    player.useStrengthPotion(strengthFromPot);
+                    System.out.println("You successfully bought a " + tColor_RED + "Strengthpotion" + tbColor_RESET + "! You have now " + player.getStrength() + tColor_RED + " attacking power" + tbColor_RESET + " and " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET + ".");
+                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+                    String select = sc.nextLine();
+                    if ("y".equals(select)) {
+                        openShop();
+                    } else {
+                        openMenu();
+                    }
+                } else if (player.getGold() < strengthPotPrice) {
+                    System.out.println(tColor_RED + "You dont have enough gold to purchase this item." + tbColor_RESET);
+                    System.out.println("Press " + tColor_GREEN + "y " + tbColor_RESET + "to browse through the shop again, anything else to go back to the " + tColor_YELLOW + "main menu." + tbColor_RESET);
+                    String select = sc.nextLine();
+                    if ("y".equals(select)) {
+                        openShop();
+                    } else {
+                        openMenu();
+                    }
+                }
+                break;
+            default:
+                System.out.println(tColor_RED + "You didnt choose anything. Redirecting you to the main menu." + tbColor_RESET);
+                System.out.println("[Press Enter to continue]");
+                sc.nextLine();
+                openMenu();
         }
     }
 

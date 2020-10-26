@@ -22,5 +22,4 @@ public class Ogre extends Monster{
     public int getGold() {
         return this.gold;
     }
-
 }
