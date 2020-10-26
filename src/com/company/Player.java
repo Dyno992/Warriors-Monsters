@@ -89,4 +89,8 @@ public class Player implements Serializable {
         }
         return endGame;
     }
+
+    public int setHealth(int health) {
+        return this.health = health;
+    }
 }

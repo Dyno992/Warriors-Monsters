@@ -65,4 +65,8 @@ public class Monster implements Serializable {
             return this.getName() + "\nHealth: " + getHealth() + "\nLevel: " + getLevel();
         }
     }
+
+    public int setHealth(int health) {
+        return this.health = health;
+    }
 }

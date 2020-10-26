@@ -22,6 +22,12 @@ public class Story {
             tempMonster.getsoundWhenHit();
             System.out.println(tColor_RED + "The monster hits you, dealing " + tempMonster.getStrength() + " damage." + tbColor_RESET);
             player.getHit(tempMonster.getStrength());
+            if (tempMonster.getHealth() <= 0) {
+                tempMonster.setHealth(0);
+            }
+            else if (player.getHealth() <= 0 ) {
+                player.setHealth(0);
+            }
             System.out.println(player.getName() + ": " + player.getHealth() + " Healthpoints left");
             System.out.println(tempMonster.getName() + ": " + tempMonster.getHealth() + " Healthpoints left\n");
             System.out.println("[Press enter to hit the monster]");
