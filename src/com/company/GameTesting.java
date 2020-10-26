@@ -15,11 +15,9 @@ public class GameTesting {
     @Test
     @DisplayName("Testing to create a Player")
     public void createPlayer() {
-
         String name = "Besim Test";
         Player p = new Player(name);
         assertEquals(name, p.getName());
-
     }
 
     @Test
@@ -49,7 +47,6 @@ public class GameTesting {
         Monster expectedMonster = allRandomMonsters.get(2);
         Monster actualMonster = allRandomMonsters.get(r.nextInt(allRandomMonsters.size()));
         assertEquals(expectedMonster, actualMonster);
-
     }
 
     @Test
@@ -63,20 +60,17 @@ public class GameTesting {
     @DisplayName("Testing if save & load function works propertly")
     public void saveGameAndLoadGame() throws IOException, ClassNotFoundException {
         Game game = new Game();
-        List<Monster> randomMonsters = new ArrayList<>();
+        List<Monster> testRandomMonsters = new ArrayList<>();
         Monster m1 = new Monster("Besim", 100, 200);
         Monster m2 = new Monster("Dino", 100, 200);
         Monster m3 = new Monster("David", 100, 200);
-        randomMonsters.add(m1);
-        randomMonsters.add(m2);
-        randomMonsters.add(m3);
+        testRandomMonsters.add(m1);
+        testRandomMonsters.add(m2);
+        testRandomMonsters.add(m3);
         Player testPlayer = new Player("testBesim");
-        game.saveGame(testPlayer, randomMonsters);
+        game.saveGame(testPlayer, testRandomMonsters);
         game.loadGame();
-
         assertEquals(game.player, testPlayer);
-        assertEquals(game.allMonsters, randomMonsters);
-
+        assertEquals(game.allMonsters, testRandomMonsters);
     }
-
 }
