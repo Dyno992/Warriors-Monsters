@@ -7,7 +7,7 @@ public class Player implements Serializable {
     private String playerName = "";
     private int level = 1;
     private int experience;
-    private int health = 200;
+    private int health = 100;
     private int strength = 15;
     private int playerGold;
 
