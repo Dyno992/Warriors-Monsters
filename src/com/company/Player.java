@@ -94,6 +94,7 @@ public class Player implements Serializable {
         return this.health = health;
     }
 
+    @Override
     public boolean equals(Object player) {
         Player p1 = (Player) player;
         return this.playerName.equals(p1.playerName);

@@ -12,13 +12,17 @@ public class Ogre extends Monster{
         this.experience = experience;
     }
 
+    @Override
     public int getExperience() {
         return this.experience;
     }
 
+    @Override
     public int getLevel() {
         return this.level;
     }
+
+    @Override
     public int getGold() {
         return this.gold;
     }

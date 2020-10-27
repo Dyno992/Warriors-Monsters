@@ -58,6 +58,7 @@ public class Monster implements Serializable {
         return this.gold;
     }
 
+    @Override
     public String toString() {
         if(this.health <= 0) {
             return this.getName() + "\n" + tColor_RED + "This Monster is dead" + tbColor_RESET;
@@ -70,6 +71,7 @@ public class Monster implements Serializable {
         return this.health = health;
     }
 
+    @Override
     public boolean equals(Object monster) {
         Monster m1 = (Monster) monster;
         return m1.name.equals(this.name) &&
