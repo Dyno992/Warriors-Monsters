@@ -14,6 +14,9 @@ public class Player implements Serializable {
     // text colors
     public static final String tColor_GREEN = "\u001B[32m";
     public static final String tbColor_RESET = "\u001B[0m";
+    public static final String tColor_PURPLE = "\u001B[35m";
+    // text background color
+    public static final String bColor_GREEN = "\u001B[42m";
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -84,6 +87,7 @@ public class Player implements Serializable {
         boolean endGame = false;
         if (getLevel() == 10 || getLevel() > 10) {
             System.out.println("\n" + tColor_GREEN + "Congratulations!" + tbColor_RESET + " You are max level and have just won the game!!!");
+            System.out.println(bColor_GREEN + tColor_PURPLE +"YOU WIN !!!!!!!!!!!!!" + tbColor_RESET + "\n");
             System.out.println("[Press Enter to see the remaining monsters and credits]");
             endGame = true;
         }
