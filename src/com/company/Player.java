@@ -43,7 +43,7 @@ public class Player implements Serializable {
     }
 
     public int getStrength() {
-        return this.strength * getLevel();
+        return this.strength + getLevel();
     }
 
     public void getHit(int hit) {

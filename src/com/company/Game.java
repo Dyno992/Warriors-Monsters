@@ -285,7 +285,7 @@ public class Game {
         int healthPotPrice = 5;
         int healthFromPot = 200;
         int strengthPotPrice = 5;
-        int strengthFromPot = 5;
+        int strengthFromPot = 3;
         System.out.println("\n*------------------------*" + tColor_CYAN + " SHOP " + tbColor_RESET + "*--------------------------*");
         System.out.println("\nWelcome to the shop. What do you want to purchase?");
         System.out.println("You have " + player.getGold() + tColor_GREEN + " Gold" + tbColor_RESET);
